@@ -26,15 +26,32 @@ body{
       color:#fff;
 }
 
+
+h2{
+    font-size:1rem;
+     font-weight: 500;
+    
+}
+h3{
+        font-size: 1.8rem;
+    font-weight: 200;
+}
+
+
+
 img{
     width:100%;
+}
+
+.ellipsis{
+    width:1rem;
 }
 .container{     
 
     width:90%;
     margin:auto;
     display:grid;
-    gap:1rem;
+    gap: 4rem;
 }
 
 header{
@@ -43,7 +60,7 @@ header{
 }
 
 
-header {
+
 
 
 
@@ -89,7 +106,7 @@ width:4rem;
     list-style: none;
     justify-content: space-between;
     /* width: 100%; */
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: 500;
    
 
@@ -111,10 +128,76 @@ width:4rem;
 
 
 
-
-
+section{
+     background: var(--Navy900);
+     position:relative;
+      padding: 2rem 1rem;
+          border-radius: 1.3rem;
 
 }
 
+section img {
+           width: 3.9rem;
+    /* margin-right: auto; */
+    margin-left: auto;
+    position: absolute;
+    right: 1.2rem;
+}
 
 
+.ellipsis{
+    
+    position: absolute;
+    right: 1.6em;
+    top: 2.7rem;
+}
+
+.daily{
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.weekly, .monthly{
+    display:none
+}
+
+
+section p{
+        font-size: 1rem;
+    font-weight: 500;
+    color: var(--Purple500);
+}
+
+.section-top{
+       
+    border-radius: 0.6rem;
+    position: absolute;
+    width: 100%;
+    top: -2.2rem;
+    z-index: -1;
+    left: 0rem;
+    height:6rem;
+}
+
+.work .section-top{
+     background-color: var(--Orange300);
+}
+
+ .play .section-top{
+     background-color: var(--Blue300);
+}
+ .study .section-top{
+     background-color: var(--Pink400);
+}
+ .exercise .section-top{
+     background-color: var(--Green400);
+}
+ .social .section-top{
+     background-color: var(--Purple700);
+}
+ .selfcare .section-top{
+     background-color: var(--Yellow300);
+}   
