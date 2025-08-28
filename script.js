@@ -113,81 +113,39 @@ const monthlyCta= document.getElementById('monthly')
 const allDailyCurrent = document.querySelectorAll('.current')
 
 const eventHandlers = ()=>{
-    dailyCta.addEventListener('click', changeDaily)
-    weeklyCta.addEventListener('click', changeWeekly)
-    monthlyCta.addEventListener('click', changeMonthly)
+    dailyCta.addEventListener('click', ()=> changePeriod('daily'))
+    weeklyCta.addEventListener('click', ()=> changePeriod('weekly'))
+    monthlyCta.addEventListener('click',()=> changePeriod('monthly'))
 
 }
 
-const changeDaily = ()=>{
 
+
+
+const changePeriod = (period)=>{
     data.forEach((item)=>{
         // get names of each div, make them same as class name, lower case and remove spaces
         let sections  = item.title.toLowerCase();
-        let dailyTimes = item.timeframes.daily.current;
+        let periodTimes = item.timeframes[period].current;
         let removeSpace = sections.replace(" ", "");
         let sectionToUpdate = document.querySelectorAll(`.${removeSpace} .daily .current`)
-    
+        let previousAmount =item.timeframes[period].previous;
+        let previousToUpdate = document.querySelectorAll(`.${removeSpace} .daily .previous`)
         sectionToUpdate.forEach((element)=>{
-            element.innerHTML = `${dailyTimes}hrs`
+            element.innerHTML = `${periodTimes}hrs`
+     })
+       previousToUpdate.forEach((element)=>{
+            element.innerHTML = `Last Month ${previousAmount}hrs`
          })
     
- 
-    })
-
-dailyCta.classList.add('active')
-monthlyCta.classList.remove('active')
-weeklyCta.classList.remove('active')
-
-
-}
-
-const changeWeekly = ()=>{
-    data.forEach((item)=>{
-        // get names of each div, make them same as class name, lower case and remove spaces
-        let sections  = item.title.toLowerCase();
-        let weeklyTimes = item.timeframes.weekly.current;
-        let removeSpace = sections.replace(" ", "");
-        let sectionToUpdate = document.querySelectorAll(`.${removeSpace} .daily .current`)
-        sectionToUpdate.forEach((element)=>{
-            element.innerHTML = `${weeklyTimes}hrs`
-     })
     
  
 })
 
 
-dailyCta.classList.remove('active')
-monthlyCta.classList.remove('active')
-weeklyCta.classList.add('active')
 
 
 }
-
-
-const changeMonthly = ()=>{
-    data.forEach((item)=>{
-        // get names of each div, make them same as class name, lower case and remove spaces
-        let sections  = item.title.toLowerCase();
-        let weeklyTimes = item.timeframes.monthly.current;
-        let removeSpace = sections.replace(" ", "");
-        let sectionToUpdate = document.querySelectorAll(`.${removeSpace} .daily .current`)
-        sectionToUpdate.forEach((element)=>{
-            element.innerHTML = `${weeklyTimes}hrs`
-     })
-    
- 
-})
-
-dailyCta.classList.remove('active')
-monthlyCta.classList.add('active')
-weeklyCta.classList.remove('active')
-
-
-
-
-}
-
 
 
 
