@@ -106,65 +106,54 @@ const data = [
 
 
 const app = (()=>{
+    const dailyCta= document.getElementById('daily')
+    const weeklyCta= document.getElementById('weekly')
+    const monthlyCta= document.getElementById('monthly')
+    const allDailyCurrent = document.querySelectorAll('.current')
+    const ctas = document.querySelectorAll('.cta')
+    const eventHandlers = ()=>{
+        dailyCta.addEventListener('click', ()=> changePeriod('daily'))
+        weeklyCta.addEventListener('click', ()=> changePeriod('weekly'))
+        monthlyCta.addEventListener('click',()=> changePeriod('monthly'))
 
-const dailyCta= document.getElementById('daily')
-const weeklyCta= document.getElementById('weekly')
-const monthlyCta= document.getElementById('monthly')
-const allDailyCurrent = document.querySelectorAll('.current')
-
-const eventHandlers = ()=>{
-    dailyCta.addEventListener('click', ()=> changePeriod('daily'))
-    weeklyCta.addEventListener('click', ()=> changePeriod('weekly'))
-    monthlyCta.addEventListener('click',()=> changePeriod('monthly'))
-
-}
-
+    }
 
 
+    const changeActive = (period)=>{
+        ctas.forEach((element)=>{
+            element.classList.remove('active')
+        })
+        document.getElementById(period).classList.add('active')
+    }
 
-const changePeriod = (period)=>{
-    data.forEach((item)=>{
+
+    const changePeriod = (period)=>{
+        data.forEach((item)=>{
         // get names of each div, make them same as class name, lower case and remove spaces
-        let sections  = item.title.toLowerCase();
-        let periodTimes = item.timeframes[period].current;
-        let removeSpace = sections.replace(" ", "");
-        let sectionToUpdate = document.querySelectorAll(`.${removeSpace} .daily .current`)
-        let previousAmount =item.timeframes[period].previous;
-        let previousToUpdate = document.querySelectorAll(`.${removeSpace} .daily .previous`)
-        sectionToUpdate.forEach((element)=>{
-            element.innerHTML = `${periodTimes}hrs`
-     })
+            const sections  = item.title.toLowerCase();
+            const periodTimes = item.timeframes[period].current;
+            const removeSpace = sections.replace(" ", "");
+            const sectionToUpdate = document.querySelectorAll(`.${removeSpace} .daily .current`)
+            const previousAmount =item.timeframes[period].previous;
+            const previousToUpdate = document.querySelectorAll(`.${removeSpace} .daily .previous`)
+            sectionToUpdate.forEach((element)=>{
+                element.innerHTML = `${periodTimes}hrs`
+        })
        previousToUpdate.forEach((element)=>{
             element.innerHTML = `Last Month ${previousAmount}hrs`
          })
-    
-    
- 
-})
 
-
-
-
+         changeActive(period)
+        
+    })
 }
-
-
-
-
-
-
-
 return {
 
-    init:()=>{
+        init:()=>{
 
-eventHandlers()
-
+            eventHandlers()
+        }
     }
-}
-
-
-
-
 })()
 
 app.init()
