@@ -1,4 +1,4 @@
-[
+const data = [
   {
     "title": "Work",
     "timeframes": {
@@ -104,3 +104,19 @@
 ]
 
 
+
+const app = (()=>{
+
+
+
+console.log(data)
+
+
+
+
+
+
+
+})
+
+app()
