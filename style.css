@@ -270,7 +270,7 @@ section p{
     }
 
     .bottom-section ul {
-            padding: 2rem 0;
+            padding:  0;
     gap: 1.1rem;
     flex-direction:column
     }
@@ -299,6 +299,19 @@ section p{
 
     }
 
+    /* section */
 
+    .daily,.weekly,.monthly{
+       flex-wrap:wrap;
+
+    }
+    section p {
+        color: var(--Navy200);
+      font-size: 0.8rem;
+    font-weight: 500;
+}
+    h3{
+        width: 100%;
+    }
 
 }
