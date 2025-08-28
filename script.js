@@ -113,55 +113,86 @@ const monthlyCta= document.getElementById('monthly')
 const allDailyCurrent = document.querySelectorAll('.current')
 
 const eventHandlers = ()=>{
-
-dailyCta.addEventListener('click', changeDaily)
-weeklyCta.addEventListener('click', changeMonthly)
+    dailyCta.addEventListener('click', changeDaily)
+    weeklyCta.addEventListener('click', changeWeekly)
+    monthlyCta.addEventListener('click', changeMonthly)
 
 }
 
 const changeDaily = ()=>{
 
-data.forEach((item)=>{
-
-    // get names of each div, make them same as class name, lower case and remove spaces
+    data.forEach((item)=>{
+        // get names of each div, make them same as class name, lower case and remove spaces
+        let sections  = item.title.toLowerCase();
+        let dailyTimes = item.timeframes.daily.current;
+        let removeSpace = sections.replace(" ", "");
+        let sectionToUpdate = document.querySelectorAll(`.${removeSpace} .daily .current`)
     
-    let sections  = item.title.toLowerCase();
-    let dailyTimes = item.timeframes.daily.current;
-    let removeSpace = sections.replace(" ", "");
-  
-    let sectionToUpdate = document.querySelectorAll(`.${removeSpace} .daily .current`)
-     sectionToUpdate.forEach((element)=>{
-        element.innerHTML = `${dailyTimes}hrs`
+        sectionToUpdate.forEach((element)=>{
+            element.innerHTML = `${dailyTimes}hrs`
+         })
+    
+ 
+    })
+
+dailyCta.classList.add('active')
+monthlyCta.classList.remove('active')
+weeklyCta.classList.remove('active')
+
+
+}
+
+const changeWeekly = ()=>{
+    data.forEach((item)=>{
+        // get names of each div, make them same as class name, lower case and remove spaces
+        let sections  = item.title.toLowerCase();
+        let weeklyTimes = item.timeframes.weekly.current;
+        let removeSpace = sections.replace(" ", "");
+        let sectionToUpdate = document.querySelectorAll(`.${removeSpace} .daily .current`)
+        sectionToUpdate.forEach((element)=>{
+            element.innerHTML = `${weeklyTimes}hrs`
      })
     
  
 })
 
-weeklyCta.classList.toggle('active')
-dailyCta.classList.toggle('active')
+
+dailyCta.classList.remove('active')
+monthlyCta.classList.remove('active')
+weeklyCta.classList.add('active')
+
 
 }
 
+
 const changeMonthly = ()=>{
-
-data.forEach((item)=>{
-
-    // get names of each div, make them same as class name, lower case and remove spaces
-    
-    let sections  = item.title.toLowerCase();
-    let weeklyTimes = item.timeframes.weekly.current;
-    let removeSpace = sections.replace(" ", "");
-    let sectionToUpdate = document.querySelectorAll(`.${removeSpace} .daily .current`)
-     sectionToUpdate.forEach((element)=>{
-        element.innerHTML = `${weeklyTimes}hrs`
+    data.forEach((item)=>{
+        // get names of each div, make them same as class name, lower case and remove spaces
+        let sections  = item.title.toLowerCase();
+        let weeklyTimes = item.timeframes.monthly.current;
+        let removeSpace = sections.replace(" ", "");
+        let sectionToUpdate = document.querySelectorAll(`.${removeSpace} .daily .current`)
+        sectionToUpdate.forEach((element)=>{
+            element.innerHTML = `${weeklyTimes}hrs`
      })
     
  
 })
 
 dailyCta.classList.remove('active')
-weeklyCta.classList.toggle('active')
+monthlyCta.classList.add('active')
+weeklyCta.classList.remove('active')
+
+
+
+
 }
+
+
+
+
+
+
 
 
 return {
